@@ -1,0 +1,14 @@
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/bin/Debug/net8.0/DEMA-Parser
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/bin/Debug/net8.0/DEMA-Parser.deps.json
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/bin/Debug/net8.0/DEMA-Parser.runtimeconfig.json
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/bin/Debug/net8.0/DEMA-Parser.dll
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/bin/Debug/net8.0/DEMA-Parser.pdb
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/DEMA-Parser.GeneratedMSBuildEditorConfig.editorconfig
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/DEMA-Parser.AssemblyInfoInputs.cache
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/DEMA-Parser.AssemblyInfo.cs
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/DEMA-Parser.csproj.CoreCompileInputs.cache
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/DEMA-Parser.dll
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/refint/DEMA-Parser.dll
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/DEMA-Parser.pdb
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/DEMA-Parser.genruntimeconfig.cache
+/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/obj/Debug/net8.0/ref/DEMA-Parser.dll

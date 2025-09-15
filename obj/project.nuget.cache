@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "2Mrv6kuHn3o=",
+  "success": true,
+  "projectFilePath": "/Users/mertfcakar/Documents/MyProjects/DEMA-Parser/DEMA-Parser.csproj",
+  "expectedPackageFiles": [
+    "/Users/mertfcakar/.nuget/packages/microsoft.netcore.app.ref/8.0.19/microsoft.netcore.app.ref.8.0.19.nupkg.sha512",
+    "/Users/mertfcakar/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.19/microsoft.aspnetcore.app.ref.8.0.19.nupkg.sha512",
+    "/Users/mertfcakar/.nuget/packages/microsoft.netcore.app.host.osx-arm64/8.0.19/microsoft.netcore.app.host.osx-arm64.8.0.19.nupkg.sha512"
+  ],
+  "logs": []
+}
