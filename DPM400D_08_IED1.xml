@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<SCL xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd" xmlns="http://www.iec.ch/61850/2003/SCL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-    <Header revision="1" id="" version="1.0" nameStructure="IEDName"/>
+<SCL xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.iec.ch/61850/2003/SCL" xsi:schemaLocation="http://www.iec.ch/61850/2003/SCL SCL.xsd">
+    <Header version="1.0" id="" revision="1" nameStructure="IEDName"/>
     <Communication>
         <SubNetwork name="NONE" type="8-MMS">
             <ConnectedAP iedName="IED1" apName="AP1">
                 <Address>
-                    <P type="IP" xsi:type="tP_IP">192.168.1.1</P>
+                    <P type="IP" xsi:type="tP_IP">192.168.2.215</P>
                     <P type="IP-SUBNET" xsi:type="tP_IP-SUBNET">255.255.255.0</P>
-                    <P type="IP-GATEWAY" xsi:type="tP_IP-GATEWAY">192.168.1.1</P>
+                    <P type="IP-GATEWAY" xsi:type="tP_IP-GATEWAY">192.168.2.1</P>
                     <P type="OSI-TSEL" xsi:type="tP_OSI-TSEL">0001</P>
                     <P type="OSI-SSEL" xsi:type="tP_OSI-SSEL">0001</P>
                     <P type="OSI-PSEL" xsi:type="tP_OSI-PSEL">00000001</P>
@@ -15,7 +15,7 @@
             </ConnectedAP>
         </SubNetwork>
     </Communication>
-    <IED configVersion="1" desc="DPM400D" name="IED1" type="DPM400D" manufacturer="DEMA">
+    <IED desc="DPM400D" name="IED1" type="DPM400D" configVersion="1" manufacturer="DEMA">
         <Services>
             <DynAssociation/>
             <SettingGroups>
@@ -28,162 +28,174 @@
             <ReadWrite/>
             <ConfReportControl max="20"/>
             <GetCBValues/>
-            <ReportSettings rptID="Dyn" datSet="Dyn" optFields="Dyn" cbName="Conf" trgOps="Dyn" intgPd="Dyn" bufTime="Dyn"/>
+            <ReportSettings intgPd="Dyn" datSet="Dyn" optFields="Dyn" rptID="Dyn" trgOps="Dyn" cbName="Conf" bufTime="Dyn"/>
             <GSESettings appID="Conf" datSet="Conf" cbName="Conf"/>
             <GOOSE max="10"/>
-            <ConfDataSet max="20" modify="true" maxAttributes="200"/>
+            <ConfDataSet maxAttributes="200" max="20" modify="true"/>
             <FileHandling/>
-            <ConfLNs fixPrefix="true" fixLnInst="true"/>
+            <ConfLNs fixLnInst="true" fixPrefix="true"/>
         </Services>
         <AccessPoint name="AP1">
             <Server>
                 <Authentication/>
                 <LDevice inst="PR">
-                    <LN0 lnClass="LLN0" lnType="LLN01" inst="">
+                    <LN0 inst="" lnClass="LLN0" lnType="LLN01">
                         <DataSet name="MEAS">
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotW" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotVAr" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotVA" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotPF" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="A" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="PPV" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="PNV" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="Hz" prefix=""/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="A" prefix="FUND_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="PPV" prefix="FUND_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="PNV" prefix="FUND_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotW" prefix="AVG_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotVAr" prefix="AVG_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotVA" prefix="AVG_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="TotPF" prefix="AVG_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="A" prefix="AVG_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="PPV" prefix="AVG_"/>
-                            <FCDA lnClass="MMXU" lnInst="1" ldInst="PR" fc="MX" doName="PNV" prefix="AVG_"/>
-                            <FCDA lnClass="MMTR" lnInst="1" ldInst="PR" fc="ST" doName="SupWh" prefix=""/>
-                            <FCDA lnClass="MMTR" lnInst="1" ldInst="PR" fc="ST" doName="DmdWh" prefix=""/>
-                            <FCDA lnClass="MMTR" lnInst="1" ldInst="PR" fc="ST" doName="SupVArh" prefix=""/>
-                            <FCDA lnClass="MMTR" lnInst="1" ldInst="PR" fc="ST" doName="DmdVArh" prefix=""/>
-                            <FCDA lnClass="MSQI" lnInst="1" ldInst="PR" fc="MX" doName="SeqA" prefix=""/>
-                            <FCDA lnClass="MSQI" lnInst="1" ldInst="PR" fc="MX" doName="SeqV" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotW" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotVAr" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotVA" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotPF" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="A" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="PPV" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="PNV" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Hz" lnClass="MMXU" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="A" lnClass="MMXU" fc="MX" prefix="FUND_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="PPV" lnClass="MMXU" fc="MX" prefix="FUND_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="PNV" lnClass="MMXU" fc="MX" prefix="FUND_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotW" lnClass="MMXU" fc="MX" prefix="AVG_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotVAr" lnClass="MMXU" fc="MX" prefix="AVG_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotVA" lnClass="MMXU" fc="MX" prefix="AVG_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="TotPF" lnClass="MMXU" fc="MX" prefix="AVG_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="A" lnClass="MMXU" fc="MX" prefix="AVG_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="PPV" lnClass="MMXU" fc="MX" prefix="AVG_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="PNV" lnClass="MMXU" fc="MX" prefix="AVG_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="SupWh" lnClass="MMTR" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="DmdWh" lnClass="MMTR" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="SupVArh" lnClass="MMTR" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="DmdVArh" lnClass="MMTR" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="SeqA" lnClass="MSQI" fc="MX" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="SeqV" lnClass="MSQI" fc="MX" prefix=""/>
                         </DataSet>
                         <DataSet name="STAT">
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Health" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="ActSG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act1SG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act2SG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act3SG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act4SG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act5SG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act6SG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act7SG" prefix=""/>
-                            <FCDA lnClass="LLN0" ldInst="PR" fc="ST" doName="Act8SG" prefix=""/>
-                            <FCDA lnClass="LPHD" lnInst="1" ldInst="PR" fc="ST" doName="PhyHealth" prefix=""/>
-                            <FCDA lnClass="PTRC" lnInst="1" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="PTRC" lnInst="2" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="PTRC" lnInst="3" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="PTRC" lnInst="4" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="PTRC" lnInst="5" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="PTRC" lnInst="6" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="PTRC" lnInst="7" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="PTRC" lnInst="8" ldInst="PR" fc="ST" doName="Tr" prefix="PRL_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind1" prefix="IN_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind2" prefix="IN_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind3" prefix="IN_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind4" prefix="IN_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind5" prefix="IN_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind6" prefix="IN_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind7" prefix="IN_"/>
-                            <FCDA lnClass="GGIO" lnInst="1" ldInst="PR" fc="ST" doName="Ind8" prefix="IN_"/>
-                            <FCDA lnClass="GAPC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix="TIM_"/>
-                            <FCDA lnClass="GAPC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="TIM_"/>
-                            <FCDA lnClass="GAPC" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix="TIM_"/>
-                            <FCDA lnClass="GAPC" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix="TIM_"/>
-                            <FCDA lnClass="GAPC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix="EQU_"/>
-                            <FCDA lnClass="GAPC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="EQU_"/>
-                            <FCDA lnClass="GAPC" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix="EQU_"/>
-                            <FCDA lnClass="GAPC" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix="EQU_"/>
-                            <FCDA lnClass="CSWI" lnInst="1" ldInst="CTRL" fc="ST" doName="Pos" prefix="CB"/>
-                            <FCDA lnClass="XCBR" lnInst="1" ldInst="CTRL" fc="ST" doName="Pos" prefix="CB"/>
-                            <FCDA lnClass="XSWI" lnInst="1" ldInst="CTRL" fc="ST" doName="Pos" prefix="DCS"/>
-                            <FCDA lnClass="XSWI" lnInst="1" ldInst="CTRL" fc="ST" doName="Pos" prefix="ESS"/>
-                            <FCDA lnClass="RDRE" lnInst="1" ldInst="DR" fc="ST" doName="RcdMade" prefix=""/>
-                            <FCDA lnClass="RDRE" lnInst="1" ldInst="DR" fc="ST" doName="FltNum" prefix=""/>
+                            <FCDA ldInst="PR" doName="Health" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="ActSG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act1SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act2SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act3SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act4SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act5SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act6SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act7SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA ldInst="PR" doName="Act8SG" lnClass="LLN0" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="PhyHealth" lnClass="LPHD" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="3" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="4" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="5" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="6" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="7" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="8" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="9" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="10" ldInst="PR" doName="Tr" lnClass="PTRC" fc="ST" prefix="PRL_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind1" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind2" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind3" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind4" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind5" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind6" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind7" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind8" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind9" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind10" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind11" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind12" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind13" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind14" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind15" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind16" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind17" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Ind18" lnClass="GGIO" fc="ST" prefix="IN_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="GAPC" fc="ST" prefix="TIM_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="GAPC" fc="ST" prefix="TIM_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="GAPC" fc="ST" prefix="TIM_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="GAPC" fc="ST" prefix="TIM_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="GAPC" fc="ST" prefix="EQU_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="GAPC" fc="ST" prefix="EQU_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="GAPC" fc="ST" prefix="EQU_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="GAPC" fc="ST" prefix="EQU_"/>
+                            <FCDA lnInst="1" ldInst="CTRL" doName="Pos" lnClass="CSWI" fc="ST" prefix="CB"/>
+                            <FCDA lnInst="1" ldInst="CTRL" doName="Pos" lnClass="XCBR" fc="ST" prefix="CB"/>
+                            <FCDA lnInst="1" ldInst="CTRL" doName="Pos" lnClass="XSWI" fc="ST" prefix="DCS"/>
+                            <FCDA lnInst="1" ldInst="CTRL" doName="Pos" lnClass="XSWI" fc="ST" prefix="ESS"/>
+                            <FCDA lnInst="1" ldInst="DR" doName="RcdMade" lnClass="RDRE" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="DR" doName="FltNum" lnClass="RDRE" fc="ST" prefix=""/>
                         </DataSet>
                         <DataSet name="PROT">
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Blk" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="3" ldInst="PR" fc="ST" doName="Str" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="3" ldInst="PR" fc="ST" doName="Op" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="3" ldInst="PR" fc="ST" doName="Blk" prefix="PH_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix="DPH_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="DPH_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix="DPH_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix="DPH_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix="DPH_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Blk" prefix="DPH_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Blk" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="3" ldInst="PR" fc="ST" doName="Str" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="3" ldInst="PR" fc="ST" doName="Op" prefix="E_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix="DE_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="DE_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix="DE_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix="DE_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix="DE_"/>
-                            <FCDA lnClass="PTOC" lnInst="2" ldInst="PR" fc="ST" doName="Blk" prefix="DE_"/>
-                            <FCDA lnClass="PTEF" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="INTR"/>
-                            <FCDA lnClass="PTEF" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix="INTR"/>
-                            <FCDA lnClass="PTOV" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix=""/>
-                            <FCDA lnClass="PTOV" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix=""/>
-                            <FCDA lnClass="PTOV" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix=""/>
-                            <FCDA lnClass="PTOV" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix=""/>
-                            <FCDA lnClass="PTOV" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix=""/>
-                            <FCDA lnClass="PTOV" lnInst="2" ldInst="PR" fc="ST" doName="Blk" prefix=""/>
-                            <FCDA lnClass="PTUV" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix=""/>
-                            <FCDA lnClass="PTUV" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix=""/>
-                            <FCDA lnClass="PTUV" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix=""/>
-                            <FCDA lnClass="PTUV" lnInst="2" ldInst="PR" fc="ST" doName="Str" prefix=""/>
-                            <FCDA lnClass="PTUV" lnInst="2" ldInst="PR" fc="ST" doName="Op" prefix=""/>
-                            <FCDA lnClass="PTUV" lnInst="2" ldInst="PR" fc="ST" doName="Blk" prefix=""/>
-                            <FCDA lnClass="PTOF" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix=""/>
-                            <FCDA lnClass="PTOF" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix=""/>
-                            <FCDA lnClass="PTOF" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix=""/>
-                            <FCDA lnClass="PTUF" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix=""/>
-                            <FCDA lnClass="PTUF" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix=""/>
-                            <FCDA lnClass="PTUF" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix=""/>
-                            <FCDA lnClass="PFRC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix=""/>
-                            <FCDA lnClass="PFRC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix=""/>
-                            <FCDA lnClass="PFRC" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix=""/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Str" prefix="BC_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Op" prefix="BC_"/>
-                            <FCDA lnClass="PTOC" lnInst="1" ldInst="PR" fc="ST" doName="Blk" prefix="BC_"/>
-                            <FCDA lnClass="SCBR" lnInst="1" ldInst="PR" fc="ST" doName="CirAlm" prefix="TCS"/>
-                            <FCDA lnClass="MSTA" lnInst="1" ldInst="PR" fc="MX" doName="AmpsA" prefix="FLT"/>
-                            <FCDA lnClass="MSTA" lnInst="1" ldInst="PR" fc="MX" doName="AmpsB" prefix="FLT"/>
-                            <FCDA lnClass="MSTA" lnInst="1" ldInst="PR" fc="MX" doName="AmpsC" prefix="FLT"/>
-                            <FCDA lnClass="MSTA" lnInst="1" ldInst="PR" fc="MX" doName="AmpsN" prefix="FLT"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="3" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="3" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="3" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="PH_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="DPH_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="DPH_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="DPH_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="DPH_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="DPH_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="DPH_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="3" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="3" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="E_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="DE_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="DE_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="DE_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="DE_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="DE_"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="DE_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTEF" fc="ST" prefix="INTR"/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="PTEF" fc="ST" prefix="INTR"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTOV" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTOV" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTOV" fc="ST" prefix=""/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="PTOV" fc="ST" prefix=""/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="PTOV" fc="ST" prefix=""/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Blk" lnClass="PTOV" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTUV" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTUV" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTUV" fc="ST" prefix=""/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Str" lnClass="PTUV" fc="ST" prefix=""/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Op" lnClass="PTUV" fc="ST" prefix=""/>
+                            <FCDA lnInst="2" ldInst="PR" doName="Blk" lnClass="PTUV" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTOF" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTOF" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTOF" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTUF" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTUF" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTUF" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PFRC" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PFRC" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PFRC" fc="ST" prefix=""/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Str" lnClass="PTOC" fc="ST" prefix="BC_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Op" lnClass="PTOC" fc="ST" prefix="BC_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="Blk" lnClass="PTOC" fc="ST" prefix="BC_"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="CirAlm" lnClass="SCBR" fc="ST" prefix="TCS"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="AmpsA" lnClass="MSTA" fc="MX" prefix="FLT"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="AmpsB" lnClass="MSTA" fc="MX" prefix="FLT"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="AmpsC" lnClass="MSTA" fc="MX" prefix="FLT"/>
+                            <FCDA lnInst="1" ldInst="PR" doName="AmpsN" lnClass="MSTA" fc="MX" prefix="FLT"/>
                         </DataSet>
-                        <ReportControl buffered="false" rptID="Measurement" datSet="MEAS" confRev="1" name="MeasRCB" intgPd="1000" bufTime="50">
-                            <TrgOps period="false" dupd="false" dchg="true" qchg="false"/>
-                            <OptFields entryID="true" seqNum="true" bufOvfl="false" dataSet="false" timeStamp="true" reasonCode="true" dataRef="false" configRef="true"/>
+                        <ReportControl confRev="1" buffered="false" name="MeasRCB" intgPd="1000" datSet="MEAS" rptID="Meas" bufTime="50">
+                            <TrgOps dupd="false" dchg="true" qchg="false" period="false"/>
+                            <OptFields dataSet="false" seqNum="true" reasonCode="true" timeStamp="true" dataRef="false" entryID="true" bufOvfl="false" configRef="true"/>
                             <RptEnabled max="5"/>
                         </ReportControl>
-                        <ReportControl buffered="true" rptID="Stat_Buffered" datSet="STAT" confRev="1" name="StatBRCB" intgPd="1000" bufTime="50">
-                            <TrgOps period="false" dupd="false" dchg="true" qchg="false"/>
-                            <OptFields entryID="true" seqNum="true" bufOvfl="false" dataSet="false" timeStamp="true" reasonCode="true" dataRef="false" configRef="true"/>
+                        <ReportControl confRev="1" buffered="true" name="StatBRCB" intgPd="1000" datSet="STAT" rptID="Stat_Buffered" bufTime="50">
+                            <TrgOps dupd="false" dchg="true" qchg="false" period="false"/>
+                            <OptFields dataSet="false" seqNum="true" reasonCode="true" timeStamp="true" dataRef="false" entryID="true" bufOvfl="false" configRef="true"/>
                             <RptEnabled max="5"/>
                         </ReportControl>
-                        <ReportControl buffered="true" rptID="Prot_Buffered" datSet="PROT" confRev="1" name="ProtBRCB" intgPd="1000" bufTime="50">
-                            <TrgOps period="false" dupd="false" dchg="true" qchg="false"/>
-                            <OptFields entryID="true" seqNum="true" bufOvfl="false" dataSet="false" timeStamp="true" reasonCode="true" dataRef="false" configRef="true"/>
+                        <ReportControl confRev="1" buffered="true" name="ProtBRCB" intgPd="1000" datSet="PROT" rptID="Prot_Buffered" bufTime="50">
+                            <TrgOps dupd="false" dchg="true" qchg="false" period="false"/>
+                            <OptFields dataSet="false" seqNum="true" reasonCode="true" timeStamp="true" dataRef="false" entryID="true" bufOvfl="false" configRef="true"/>
                             <RptEnabled max="5"/>
                         </ReportControl>
                         <DOI name="NamPlt">
@@ -203,71 +215,71 @@
                                 <Val>IEC 61850-7-4:2003</Val>
                             </DAI>
                         </DOI>
-                        <SettingControl desc="parameter set" numOfSGs="8" actSG="1"/>
+                        <SettingControl numOfSGs="8" desc="parameter set" actSG="1"/>
                     </LN0>
-                    <LN lnClass="LPHD" lnType="LPHD1" prefix="" inst="1">
+                    <LN inst="1" lnClass="LPHD" lnType="LPHD1" prefix="">
                         <DOI name="PhyNam">
                             <DAI name="vendor">
                                 <Val>DEMA</Val>
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="PTOC" lnType="ND_PTOC" prefix="PH_" inst="1"/>
-                    <LN lnClass="PTOC" lnType="ND_PTOC" prefix="PH_" inst="2"/>
-                    <LN lnClass="PTOC" lnType="ND_PTOC" prefix="PH_" inst="3"/>
-                    <LN lnClass="PTOC" lnType="DPH_PTOC" prefix="DPH_" inst="1"/>
-                    <LN lnClass="PTOC" lnType="DPH_PTOC" prefix="DPH_" inst="2"/>
-                    <LN lnClass="PTOC" lnType="DPH_PTOC" prefix="DPH_" inst="3"/>
-                    <LN lnClass="PTOC" lnType="ND_PTOC" prefix="E_" inst="1"/>
-                    <LN lnClass="PTOC" lnType="ND_PTOC" prefix="E_" inst="2"/>
-                    <LN lnClass="PTOC" lnType="ND_PTOC" prefix="E_" inst="3"/>
-                    <LN lnClass="PTOC" lnType="DND_PTOC" prefix="ED_" inst="1"/>
-                    <LN lnClass="PTOC" lnType="DND_PTOC" prefix="ED_" inst="2"/>
-                    <LN lnClass="PTOC" lnType="DE_PTOC" prefix="DE_" inst="1"/>
-                    <LN lnClass="PTOC" lnType="DE_PTOC" prefix="DE_" inst="2"/>
-                    <LN lnClass="PTOC" lnType="DE_PTOC" prefix="DE_" inst="3"/>
-                    <LN lnClass="PTOC" lnType="DED_PTOC" prefix="DED_" inst="1"/>
-                    <LN lnClass="PTOC" lnType="DED_PTOC" prefix="DED_" inst="2"/>
-                    <LN lnClass="PTOC" lnType="NS_PTOC" prefix="NS_" inst="1"/>
-                    <LN lnClass="PTOC" lnType="NS_PTOC" prefix="NS_" inst="2"/>
-                    <LN lnClass="PTOC" lnType="NS_PTOC" prefix="NS_" inst="3"/>
-                    <LN lnClass="PTTR" lnType="PTTR" prefix="" inst="1"/>
-                    <LN lnClass="PTUC" lnType="PTUC" prefix="" inst="1"/>
-                    <LN lnClass="PTOV" lnType="PTOV" prefix="" inst="1"/>
-                    <LN lnClass="PTOV" lnType="PTOV" prefix="" inst="2"/>
-                    <LN lnClass="PTOV" lnType="NS_PTOV" prefix="NS_" inst="1"/>
-                    <LN lnClass="PTOV" lnType="E_PTOV" prefix="E_" inst="1"/>
-                    <LN lnClass="PTUV" lnType="PTUV" prefix="" inst="1"/>
-                    <LN lnClass="PTUV" lnType="PTUV" prefix="" inst="2"/>
-                    <LN lnClass="PTOF" lnType="PTOF" prefix="" inst="1"/>
-                    <LN lnClass="PTOF" lnType="PTOF" prefix="" inst="2"/>
-                    <LN lnClass="PTOF" lnType="PTOF" prefix="" inst="3"/>
-                    <LN lnClass="PTOF" lnType="PTOF" prefix="" inst="4"/>
-                    <LN lnClass="PTOF" lnType="PTOF" prefix="" inst="5"/>
-                    <LN lnClass="PTOF" lnType="PTOF" prefix="" inst="6"/>
-                    <LN lnClass="PTUF" lnType="PTUF" prefix="" inst="1"/>
-                    <LN lnClass="PTUF" lnType="PTUF" prefix="" inst="2"/>
-                    <LN lnClass="PTUF" lnType="PTUF" prefix="" inst="3"/>
-                    <LN lnClass="PTUF" lnType="PTUF" prefix="" inst="4"/>
-                    <LN lnClass="PTUF" lnType="PTUF" prefix="" inst="5"/>
-                    <LN lnClass="PTUF" lnType="PTUF" prefix="" inst="6"/>
-                    <LN lnClass="PFRC" lnType="PFRC" prefix="" inst="1"/>
-                    <LN lnClass="PFRC" lnType="PFRC" prefix="" inst="2"/>
-                    <LN lnClass="PFRC" lnType="PFRC" prefix="" inst="3"/>
-                    <LN lnClass="PFRC" lnType="PFRC" prefix="" inst="4"/>
-                    <LN lnClass="PFRC" lnType="PFRC" prefix="" inst="5"/>
-                    <LN lnClass="PFRC" lnType="PFRC" prefix="" inst="6"/>
-                    <LN lnClass="PDOP" lnType="PDOP" prefix="P_" inst="1"/>
-                    <LN lnClass="PDOP" lnType="PDOP" prefix="P_" inst="2"/>
-                    <LN lnClass="PDOP" lnType="PDOP" prefix="Q_" inst="1"/>
-                    <LN lnClass="PDOP" lnType="PDOP" prefix="Q_" inst="2"/>
-                    <LN lnClass="PDUP" lnType="PDUP" prefix="P_" inst="1"/>
-                    <LN lnClass="PDUP" lnType="PDUP" prefix="P_" inst="2"/>
-                    <LN lnClass="PDUP" lnType="PDUP" prefix="Q_" inst="1"/>
-                    <LN lnClass="PDUP" lnType="PDUP" prefix="Q_" inst="2"/>
-                    <LN lnClass="PSDE" lnType="PSDE" prefix="" inst="1"/>
-                    <LN lnClass="PSDE" lnType="PSDE" prefix="" inst="2"/>
-                    <LN lnClass="PHAR" lnType="PHAR" prefix="" inst="1">
+                    <LN inst="1" lnClass="PTOC" prefix="PH_" lnType="ND_PTOC"/>
+                    <LN inst="2" lnClass="PTOC" prefix="PH_" lnType="ND_PTOC"/>
+                    <LN inst="3" lnClass="PTOC" prefix="PH_" lnType="ND_PTOC"/>
+                    <LN inst="1" lnClass="PTOC" prefix="DPH_" lnType="DPH_PTOC"/>
+                    <LN inst="2" lnClass="PTOC" prefix="DPH_" lnType="DPH_PTOC"/>
+                    <LN inst="3" lnClass="PTOC" prefix="DPH_" lnType="DPH_PTOC"/>
+                    <LN inst="1" lnClass="PTOC" prefix="E_" lnType="ND_PTOC"/>
+                    <LN inst="2" lnClass="PTOC" prefix="E_" lnType="ND_PTOC"/>
+                    <LN inst="3" lnClass="PTOC" prefix="E_" lnType="ND_PTOC"/>
+                    <LN inst="1" lnClass="PTOC" prefix="ED_" lnType="DND_PTOC"/>
+                    <LN inst="2" lnClass="PTOC" prefix="ED_" lnType="DND_PTOC"/>
+                    <LN inst="1" lnClass="PTOC" prefix="DE_" lnType="DE_PTOC"/>
+                    <LN inst="2" lnClass="PTOC" prefix="DE_" lnType="DE_PTOC"/>
+                    <LN inst="3" lnClass="PTOC" prefix="DE_" lnType="DE_PTOC"/>
+                    <LN inst="1" lnClass="PTOC" prefix="DED_" lnType="DED_PTOC"/>
+                    <LN inst="2" lnClass="PTOC" prefix="DED_" lnType="DED_PTOC"/>
+                    <LN inst="1" lnClass="PTOC" prefix="NS_" lnType="NS_PTOC"/>
+                    <LN inst="2" lnClass="PTOC" prefix="NS_" lnType="NS_PTOC"/>
+                    <LN inst="3" lnClass="PTOC" prefix="NS_" lnType="NS_PTOC"/>
+                    <LN inst="1" lnClass="PTTR" prefix="" lnType="PTTR"/>
+                    <LN inst="1" lnClass="PTUC" prefix="" lnType="PTUC"/>
+                    <LN inst="1" lnClass="PTOV" prefix="" lnType="PTOV"/>
+                    <LN inst="2" lnClass="PTOV" prefix="" lnType="PTOV"/>
+                    <LN inst="1" lnClass="PTOV" prefix="NS_" lnType="NS_PTOV"/>
+                    <LN inst="1" lnClass="PTOV" prefix="E_" lnType="E_PTOV"/>
+                    <LN inst="1" lnClass="PTUV" prefix="" lnType="PTUV"/>
+                    <LN inst="2" lnClass="PTUV" prefix="" lnType="PTUV"/>
+                    <LN inst="1" lnClass="PTOF" prefix="" lnType="PTOF"/>
+                    <LN inst="2" lnClass="PTOF" prefix="" lnType="PTOF"/>
+                    <LN inst="3" lnClass="PTOF" prefix="" lnType="PTOF"/>
+                    <LN inst="4" lnClass="PTOF" prefix="" lnType="PTOF"/>
+                    <LN inst="5" lnClass="PTOF" prefix="" lnType="PTOF"/>
+                    <LN inst="6" lnClass="PTOF" prefix="" lnType="PTOF"/>
+                    <LN inst="1" lnClass="PTUF" prefix="" lnType="PTUF"/>
+                    <LN inst="2" lnClass="PTUF" prefix="" lnType="PTUF"/>
+                    <LN inst="3" lnClass="PTUF" prefix="" lnType="PTUF"/>
+                    <LN inst="4" lnClass="PTUF" prefix="" lnType="PTUF"/>
+                    <LN inst="5" lnClass="PTUF" prefix="" lnType="PTUF"/>
+                    <LN inst="6" lnClass="PTUF" prefix="" lnType="PTUF"/>
+                    <LN inst="1" lnClass="PFRC" prefix="" lnType="PFRC"/>
+                    <LN inst="2" lnClass="PFRC" prefix="" lnType="PFRC"/>
+                    <LN inst="3" lnClass="PFRC" prefix="" lnType="PFRC"/>
+                    <LN inst="4" lnClass="PFRC" prefix="" lnType="PFRC"/>
+                    <LN inst="5" lnClass="PFRC" prefix="" lnType="PFRC"/>
+                    <LN inst="6" lnClass="PFRC" prefix="" lnType="PFRC"/>
+                    <LN inst="1" lnClass="PDOP" prefix="P_" lnType="PDOP"/>
+                    <LN inst="2" lnClass="PDOP" prefix="P_" lnType="PDOP"/>
+                    <LN inst="1" lnClass="PDOP" prefix="Q_" lnType="PDOP"/>
+                    <LN inst="2" lnClass="PDOP" prefix="Q_" lnType="PDOP"/>
+                    <LN inst="1" lnClass="PDUP" prefix="P_" lnType="PDUP"/>
+                    <LN inst="2" lnClass="PDUP" prefix="P_" lnType="PDUP"/>
+                    <LN inst="1" lnClass="PDUP" prefix="Q_" lnType="PDUP"/>
+                    <LN inst="2" lnClass="PDUP" prefix="Q_" lnType="PDUP"/>
+                    <LN inst="1" lnClass="PSDE" prefix="" lnType="PSDE"/>
+                    <LN inst="2" lnClass="PSDE" prefix="" lnType="PSDE"/>
+                    <LN inst="1" lnClass="PHAR" prefix="" lnType="PHAR">
                         <DOI name="Mod">
                             <DAI name="stVal">
                                 <Val>on</Val>
@@ -279,8 +291,8 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="MMXU" lnType="RMS_MMXU" prefix="" inst="1"/>
-                    <LN lnClass="MMXU" lnType="FUND_MMXU" prefix="FUND_" inst="1">
+                    <LN inst="1" lnClass="MMXU" prefix="" lnType="RMS_MMXU"/>
+                    <LN inst="1" lnClass="MMXU" prefix="FUND_" lnType="FUND_MMXU">
                         <DOI name="ClcMth">
                             <DAI name="setVal">
                                 <Val>RMS_FUNDAMENTAL</Val>
@@ -302,7 +314,7 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="MMXU" lnType="AVG_MMXU" prefix="AVG_" inst="1">
+                    <LN inst="1" lnClass="MMXU" prefix="AVG_" lnType="AVG_MMXU">
                         <DOI name="ClcMth">
                             <DAI name="setVal">
                                 <Val>AVG</Val>
@@ -324,7 +336,7 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="MMXU" lnType="MIN_MMXU" prefix="MIN_" inst="1">
+                    <LN inst="1" lnClass="MMXU" prefix="MIN_" lnType="MIN_MMXU">
                         <DOI name="ClcMth">
                             <DAI name="setVal">
                                 <Val>MIN</Val>
@@ -346,7 +358,7 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="MMXU" lnType="MAX_MMXU" prefix="MAX_" inst="1">
+                    <LN inst="1" lnClass="MMXU" prefix="MAX_" lnType="MAX_MMXU">
                         <DOI name="ClcMth">
                             <DAI name="setVal">
                                 <Val>MAX</Val>
@@ -368,35 +380,47 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="MMTR" lnType="MMTR" prefix="" inst="1"/>
-                    <LN lnClass="MSQI" lnType="MSQI" prefix="" inst="1"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="1"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="2"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="3"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="4"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="5"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="6"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="7"/>
-                    <LN lnClass="PTRC" lnType="PRL_PTRC" prefix="PRL_" inst="8"/>
-                    <LN lnClass="PTOC" lnType="BC_PTOC" prefix="BC_" inst="1"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="1"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="2"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="3"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="4"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="5"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="6"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="7"/>
-                    <LN lnClass="GAPC" lnType="TIM_GAPC" prefix="TIM_" inst="8"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="1"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="2"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="3"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="4"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="5"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="6"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="7"/>
-                    <LN lnClass="GAPC" lnType="EQU_GAPC" prefix="EQU_" inst="8"/>
-                    <LN lnClass="GGIO" lnType="IN_GGIO" prefix="IN_" inst="1"/>
-                    <LN lnClass="SCBR" lnType="TCSSCBR1_B_3" desc="TCSSCBR1" prefix="TCS" inst="1">
+                    <LN inst="1" lnClass="MMTR" prefix="" lnType="MMTR"/>
+                    <LN inst="1" lnClass="MSQI" prefix="" lnType="MSQI"/>
+                    <LN inst="1" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="2" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="3" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="4" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="5" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="6" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="7" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="8" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="9" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="10" lnClass="PTRC" prefix="PRL_" lnType="PRL_PTRC"/>
+                    <LN inst="1" lnClass="PTOC" prefix="BC_" lnType="BC_PTOC"/>
+                    <LN inst="1" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="2" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="3" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="4" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="5" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="6" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="7" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="8" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="9" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="10" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="11" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="12" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="13" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="14" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="15" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="16" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="17" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="18" lnClass="GAPC" prefix="TIM_" lnType="TIM_GAPC"/>
+                    <LN inst="1" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="2" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="3" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="4" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="5" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="6" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="7" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="8" lnClass="GAPC" prefix="EQU_" lnType="EQU_GAPC"/>
+                    <LN inst="1" lnClass="GGIO" prefix="IN_" lnType="IN_GGIO"/>
+                    <LN desc="TCSSCBR1" inst="1" lnClass="SCBR" prefix="TCS" lnType="TCSSCBR1_B_3">
                         <DOI desc="Operate Delay Time" name="OpDlTmms">
                             <DAI name="minVal">
                                 <Val>0</Val>
@@ -415,7 +439,7 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="MSTA" lnType="FLTMSTA0_ED1_G_2" desc="FLTMSTA1" prefix="FLT" inst="1">
+                    <LN desc="FLTMSTA1" inst="1" lnClass="MSTA" prefix="FLT" lnType="FLTMSTA0_ED1_G_2">
                         <DOI desc="Phase A current" name="AmpsA">
                             <SDI name="mag">
                                 <DAI name="f"/>
@@ -449,14 +473,14 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="PTEF" lnType="INTRPTEF" desc="INTRPTEF1" prefix="INTR" inst="1">
+                    <LN desc="INTRPTEF1" inst="1" lnClass="PTEF" prefix="INTR" lnType="INTRPTEF">
                         <DOI desc="Name plate" name="NamPlt">
                             <DAI name="d">
                                 <Val>INTRPTEF1 Name plate</Val>
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="PTEF" lnType="INTRPTEF" desc="INTRPTEF2" prefix="INTR" inst="2">
+                    <LN desc="INTRPTEF2" inst="2" lnClass="PTEF" prefix="INTR" lnType="INTRPTEF">
                         <DOI desc="Name plate" name="NamPlt">
                             <DAI name="d">
                                 <Val>INTRPTEF2 Name plate</Val>
@@ -465,7 +489,7 @@
                     </LN>
                 </LDevice>
                 <LDevice inst="CTRL">
-                    <LN0 lnClass="LLN0" lnType="CTRL_LLN0_C_10" desc="Control LLN0" inst="">
+                    <LN0 desc="Control LLN0" inst="" lnClass="LLN0" lnType="CTRL_LLN0_C_10">
                         <DOI desc="Control" name="NamPlt">
                             <DAI name="vendor">
                                 <Val>DEMA</Val>
@@ -484,7 +508,7 @@
                             </DAI>
                         </DOI>
                     </LN0>
-                    <LN lnClass="CSWI" lnType="CSWI_1" prefix="CB" inst="1">
+                    <LN inst="1" lnClass="CSWI" prefix="CB" lnType="CSWI_1">
                         <DOI name="Pos">
                             <DAI name="ctlModel" valKind="Set">
                                 <Val>direct-with-normal-security</Val>
@@ -532,7 +556,7 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="XCBR" lnType="BREAKER1_XCBR_C_2" desc="CBXCBR1" prefix="CB" inst="1">
+                    <LN desc="CBXCBR1" inst="1" lnClass="XCBR" prefix="CB" lnType="BREAKER1_XCBR_C_2">
                         <DOI desc="Name plate" name="NamPlt">
                             <DAI name="swRev">
                                 <Val>C</Val>
@@ -589,7 +613,7 @@
                             <DAI name="t"/>
                         </DOI>
                     </LN>
-                    <LN lnClass="XSWI" lnType="DCSXSWI_1" prefix="DCS" inst="1">
+                    <LN inst="1" lnClass="XSWI" prefix="DCS" lnType="DCSXSWI_1">
                         <DOI name="Pos">
                             <DAI name="ctlModel" valKind="Set">
                                 <Val>status-only</Val>
@@ -634,7 +658,7 @@
                             </DAI>
                         </DOI>
                     </LN>
-                    <LN lnClass="XSWI" lnType="ESSXSWI_1" prefix="ESS" inst="1">
+                    <LN inst="1" lnClass="XSWI" prefix="ESS" lnType="ESSXSWI_1">
                         <DOI name="Pos">
                             <DAI name="ctlModel" valKind="Set">
                                 <Val>status-only</Val>
@@ -680,8 +704,8 @@
                         </DOI>
                     </LN>
                 </LDevice>
-                <LDevice desc="Disturbance records" inst="DR">
-                    <LN0 lnClass="LLN0" lnType="DR_LLN0" desc="Disturbance Record LLN0" inst="">
+                <LDevice inst="DR" desc="Disturbance records">
+                    <LN0 desc="Disturbance Record LLN0" inst="" lnClass="LLN0" lnType="DR_LLN0">
                         <DOI desc="DR" name="NamPlt">
                             <DAI name="vendor">
                                 <Val>DEMA</Val>
@@ -700,25 +724,25 @@
                             </DAI>
                         </DOI>
                     </LN0>
-                    <LN lnClass="RDRE" lnType="RDRE_1" desc="Disturbance recorder" inst="1"/>
+                    <LN desc="Disturbance recorder" inst="1" lnClass="RDRE" lnType="RDRE_1"/>
                 </LDevice>
             </Server>
         </AccessPoint>
     </IED>
     <DataTypeTemplates>
-        <LNodeType lnClass="SCBR" id="TCSSCBR1_B_3">
+        <LNodeType id="TCSSCBR1_B_3" lnClass="SCBR">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="OpDlTmms" type="ING_SP_e"/>
             <DO name="CirAlm" type="SPS_e"/>
         </LNodeType>
-        <LNodeType lnClass="LLN0" id="CTRL_LLN0_C_10">
+        <LNodeType id="CTRL_LLN0_C_10" lnClass="LLN0">
             <DO name="Mod" type="INC_Mod_OnOff_2"/>
             <DO name="Beh" type="INS_beh"/>
             <DO name="Health" type="INS_health"/>
             <DO name="NamPlt" type="LPL_CTRLDR_LNN0_1"/>
         </LNodeType>
-        <LNodeType lnClass="LLN0" id="LLN01" desc="Logical node zero">
+        <LNodeType desc="Logical node zero" id="LLN01" lnClass="LLN0">
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="Beh" type="INS_beh"/>
             <DO name="Health" type="INS_health"/>
@@ -734,19 +758,19 @@
             <DO name="Act8SG" type="ActSG_2"/>
             <DO name="LEDRs" type="SPC_simple_2"/>
         </LNodeType>
-        <LNodeType lnClass="LLN0" id="DR_LLN0" desc="Logical node zero">
+        <LNodeType desc="Logical node zero" id="DR_LLN0" lnClass="LLN0">
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="Beh" type="INS_beh"/>
             <DO name="Health" type="INS_health"/>
             <DO name="NamPlt" type="LPL_1_NamPlt"/>
         </LNodeType>
-        <LNodeType lnClass="LPHD" id="LPHD1" desc="Physical device information">
+        <LNodeType desc="Physical device information" id="LPHD1" lnClass="LPHD">
             <DO name="PhyNam" type="DPL_1_PhyNam"/>
             <DO name="PhyHealth" type="INS_health"/>
             <DO name="Proxy" type="SPS"/>
         </LNodeType>
         <!-- Non-directional over current -->
-        <LNodeType lnClass="PTOC" id="ND_PTOC">
+        <LNodeType id="ND_PTOC" lnClass="PTOC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="ProOff" type="SPG_ProOff"/>
@@ -767,7 +791,7 @@
             <DO name="OpTmmsInc" type="ING_EXT"/>
         </LNodeType>
         <!-- Derived non-directional over current -->
-        <LNodeType lnClass="PTOC" id="DND_PTOC">
+        <LNodeType id="DND_PTOC" lnClass="PTOC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="ProOff" type="SPG_ProOff"/>
@@ -787,7 +811,7 @@
             <DO name="OpTmmsInc" type="ING_EXT"/>
         </LNodeType>
         <!-- Directional over current -->
-        <LNodeType lnClass="PTOC" id="DPH_PTOC">
+        <LNodeType id="DPH_PTOC" lnClass="PTOC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="ProOff" type="SPG_ProOff"/>
@@ -811,7 +835,7 @@
             <DO name="TripZone" type="ING_SE_EXT"/>
         </LNodeType>
         <!-- Earth directional over current -->
-        <LNodeType lnClass="PTOC" id="DE_PTOC">
+        <LNodeType id="DE_PTOC" lnClass="PTOC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="ProOff" type="SPG_ProOff"/>
@@ -835,7 +859,7 @@
             <DO name="TripZone" type="ING_SE_EXT"/>
         </LNodeType>
         <!-- Derived earth directional over current -->
-        <LNodeType lnClass="PTOC" id="DED_PTOC">
+        <LNodeType id="DED_PTOC" lnClass="PTOC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="ProOff" type="SPG_ProOff"/>
@@ -858,7 +882,7 @@
             <DO name="TripZone" type="ING_SE_EXT"/>
         </LNodeType>
         <!-- Negative sequence non-directional over current -->
-        <LNodeType lnClass="PTOC" id="NS_PTOC">
+        <LNodeType id="NS_PTOC" lnClass="PTOC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="ProOff" type="SPG_ProOff"/>
@@ -876,7 +900,7 @@
             <DO name="StrValMul" type="ASG_EXT"/>
         </LNodeType>
         <!-- Thermal overload -->
-        <LNodeType lnClass="PTTR" id="PTTR">
+        <LNodeType id="PTTR" lnClass="PTTR">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Op" type="ACT_Op"/>
@@ -894,7 +918,7 @@
             <DO name="ThrmLvl" type="MV_EXT"/>
         </LNodeType>
         <!-- Under current -->
-        <LNodeType lnClass="PTUC" id="PTUC">
+        <LNodeType id="PTUC" lnClass="PTUC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Op" type="ACT_Op"/>
@@ -911,7 +935,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- Over voltage -->
-        <LNodeType lnClass="PTOV" id="PTOV">
+        <LNodeType id="PTOV" lnClass="PTOV">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -925,7 +949,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- NS Over voltage -->
-        <LNodeType lnClass="PTOV" id="NS_PTOV">
+        <LNodeType id="NS_PTOV" lnClass="PTOV">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -938,7 +962,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- E Over voltage -->
-        <LNodeType lnClass="PTOV" id="E_PTOV">
+        <LNodeType id="E_PTOV" lnClass="PTOV">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -951,7 +975,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- Under voltage -->
-        <LNodeType lnClass="PTUV" id="PTUV">
+        <LNodeType id="PTUV" lnClass="PTUV">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -965,7 +989,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- Over frequency -->
-        <LNodeType lnClass="PTOF" id="PTOF">
+        <LNodeType id="PTOF" lnClass="PTOF">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -979,7 +1003,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- Under frequency -->
-        <LNodeType lnClass="PTUF" id="PTUF">
+        <LNodeType id="PTUF" lnClass="PTUF">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -993,7 +1017,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- Rate of change of frequency -->
-        <LNodeType lnClass="PFRC" id="PFRC">
+        <LNodeType id="PFRC" lnClass="PFRC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -1009,7 +1033,7 @@
             <DO name="RsDlTmms" type="ING_SE"/>
         </LNodeType>
         <!-- Directional over power -->
-        <LNodeType lnClass="PDOP" id="PDOP">
+        <LNodeType id="PDOP" lnClass="PDOP">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -1022,7 +1046,7 @@
             <DO name="DirAng" type="ING_SE_EXT"/>
         </LNodeType>
         <!-- Directional under power -->
-        <LNodeType lnClass="PDUP" id="PDUP">
+        <LNodeType id="PDUP" lnClass="PDUP">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -1035,7 +1059,7 @@
             <DO name="DirAng" type="ING_SE_EXT"/>
         </LNodeType>
         <!-- Wattmetric directional earth fault -->
-        <LNodeType lnClass="PSDE" id="PSDE">
+        <LNodeType id="PSDE" lnClass="PSDE">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -1055,7 +1079,7 @@
             <DO name="RstTms" type="ASG_SE_EXT_s"/>
         </LNodeType>
         <!-- Harmonic restraint -->
-        <LNodeType lnClass="PHAR" id="PHAR">
+        <LNodeType id="PHAR" lnClass="PHAR">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="Str" type="ACD_Str"/>
@@ -1064,7 +1088,7 @@
             <DO name="OpDlTmms" type="ING"/>
             <DO name="RsDlTmms" type="ING"/>
         </LNodeType>
-        <LNodeType lnClass="MMTR" id="MMTR">
+        <LNodeType id="MMTR" lnClass="MMTR">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="SupWh" type="BCR"/>
@@ -1072,7 +1096,7 @@
             <DO name="SupVArh" type="BCR"/>
             <DO name="DmdVArh" type="BCR"/>
         </LNodeType>
-        <LNodeType lnClass="MMXU" id="RMS_MMXU">
+        <LNodeType id="RMS_MMXU" lnClass="MMXU">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="TotW" type="MV"/>
@@ -1084,7 +1108,7 @@
             <DO name="PNV" type="WYE_res"/>
             <DO name="Hz" type="MV"/>
         </LNodeType>
-        <LNodeType lnClass="MMXU" id="FUND_MMXU">
+        <LNodeType id="FUND_MMXU" lnClass="MMXU">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="A" type="WYE_neut"/>
@@ -1095,7 +1119,7 @@
             <DO name="ClcIntvTyp" type="ENG_ClcIntvTyp"/>
             <DO name="ClcIntvPer" type="ING_RO"/>
         </LNodeType>
-        <LNodeType lnClass="MMXU" id="AVG_MMXU">
+        <LNodeType id="AVG_MMXU" lnClass="MMXU">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="TotW" type="MV"/>
@@ -1110,7 +1134,7 @@
             <DO name="ClcIntvTyp" type="ENG_ClcIntvTyp"/>
             <DO name="ClcIntvPer" type="ING"/>
         </LNodeType>
-        <LNodeType lnClass="MMXU" id="MAX_MMXU">
+        <LNodeType id="MAX_MMXU" lnClass="MMXU">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="TotW" type="MV"/>
@@ -1122,7 +1146,7 @@
             <DO name="ClcIntvTyp" type="ENG_ClcIntvTyp"/>
             <DO name="ClcIntvPer" type="ING"/>
         </LNodeType>
-        <LNodeType lnClass="MMXU" id="MIN_MMXU">
+        <LNodeType id="MIN_MMXU" lnClass="MMXU">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="TotW" type="MV"/>
@@ -1134,14 +1158,14 @@
             <DO name="ClcIntvTyp" type="ENG_ClcIntvTyp"/>
             <DO name="ClcIntvPer" type="ING"/>
         </LNodeType>
-        <LNodeType lnClass="MSQI" id="MSQI">
+        <LNodeType id="MSQI" lnClass="MSQI">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="SeqA" type="SEQ"/>
             <DO name="SeqV" type="SEQ"/>
         </LNodeType>
         <!-- Broken conductor PTOC -->
-        <LNodeType lnClass="PTOC" id="BC_PTOC">
+        <LNodeType id="BC_PTOC" lnClass="PTOC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Blk" type="SPS"/>
@@ -1151,7 +1175,7 @@
             <DO name="StrVal" type="ASG"/>
             <DO name="OpDlTmms" type="ING"/>
         </LNodeType>
-        <LNodeType lnClass="PTRC" id="PRL_PTRC">
+        <LNodeType id="PRL_PTRC" lnClass="PTRC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="Tr" type="ACT_Op"/>
@@ -1159,14 +1183,14 @@
             <DO name="TrOutMod" type="ENG_TrOutMod_EXT"/>
             <DO name="InvMod" type="SPG_EXT"/>
         </LNodeType>
-        <LNodeType lnClass="GAPC" id="TIM_GAPC">
+        <LNodeType id="TIM_GAPC" lnClass="GAPC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="Str" type="ACD_Str"/>
             <DO name="Op" type="ACT_Op"/>
             <DO name="OpDlTmms" type="ING_EXT"/>
         </LNodeType>
-        <LNodeType lnClass="GAPC" id="EQU_GAPC">
+        <LNodeType id="EQU_GAPC" lnClass="GAPC">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="Str" type="ACD_Str"/>
@@ -1174,7 +1198,7 @@
             <DO name="OpDlTmms" type="ING_EXT"/>
             <DO name="RsDlTmms" type="ING_EXT"/>
         </LNodeType>
-        <LNodeType lnClass="GGIO" id="IN_GGIO">
+        <LNodeType id="IN_GGIO" lnClass="GGIO">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod_status_only"/>
             <DO name="Ind1" type="SPS"/>
@@ -1185,15 +1209,25 @@
             <DO name="Ind6" type="SPS"/>
             <DO name="Ind7" type="SPS"/>
             <DO name="Ind8" type="SPS"/>
+            <DO name="Ind9" type="SPS"/>
+            <DO name="Ind10" type="SPS"/>
+            <DO name="Ind11" type="SPS"/>
+            <DO name="Ind12" type="SPS"/>
+            <DO name="Ind13" type="SPS"/>
+            <DO name="Ind14" type="SPS"/>
+            <DO name="Ind15" type="SPS"/>
+            <DO name="Ind16" type="SPS"/>
+            <DO name="Ind17" type="SPS"/>
+            <DO name="Ind18" type="SPS"/>
         </LNodeType>
-        <LNodeType lnClass="CSWI" id="CSWI_1">
-            <DO name="Mod" type="INC_1"/>
-            <DO name="Beh" type="INS_2"/>
-            <DO name="Health" type="INS_2"/>
-            <DO name="NamPlt" type="LPL_0"/>
-            <DO name="Pos" type="DPC_1"/>
+        <LNodeType id="CSWI_1" lnClass="CSWI">
+            <DO type="INC_1" name="Mod"/>
+            <DO type="INS_2" name="Beh"/>
+            <DO type="INS_2" name="Health"/>
+            <DO type="LPL_0" name="NamPlt"/>
+            <DO type="DPC_1" name="Pos"/>
         </LNodeType>
-        <LNodeType lnClass="XCBR" id="BREAKER1_XCBR_C_2">
+        <LNodeType id="BREAKER1_XCBR_C_2" lnClass="XCBR">
             <DO name="Mod" type="INC_Mod_On"/>
             <DO name="Beh" type="INS_2"/>
             <DO name="Health" type="INS_2"/>
@@ -1205,21 +1239,21 @@
             <DO name="BlkCls" type="SPC_simple_1"/>
             <DO name="CBOpCap" type="INS_cbopcap"/>
         </LNodeType>
-        <LNodeType lnClass="XSWI" id="DCSXSWI_1">
-            <DO name="Mod" type="INC_1"/>
-            <DO name="Beh" type="INS_2"/>
-            <DO name="Health" type="INS_2"/>
-            <DO name="NamPlt" type="LPL_0"/>
-            <DO name="Pos" type="DPC_2"/>
+        <LNodeType id="DCSXSWI_1" lnClass="XSWI">
+            <DO type="INC_1" name="Mod"/>
+            <DO type="INS_2" name="Beh"/>
+            <DO type="INS_2" name="Health"/>
+            <DO type="LPL_0" name="NamPlt"/>
+            <DO type="DPC_2" name="Pos"/>
         </LNodeType>
-        <LNodeType lnClass="XSWI" id="ESSXSWI_1">
-            <DO name="Mod" type="INC_1"/>
-            <DO name="Beh" type="INS_2"/>
-            <DO name="Health" type="INS_2"/>
-            <DO name="NamPlt" type="LPL_0"/>
-            <DO name="Pos" type="DPC_2"/>
+        <LNodeType id="ESSXSWI_1" lnClass="XSWI">
+            <DO type="INC_1" name="Mod"/>
+            <DO type="INS_2" name="Beh"/>
+            <DO type="INS_2" name="Health"/>
+            <DO type="LPL_0" name="NamPlt"/>
+            <DO type="DPC_2" name="Pos"/>
         </LNodeType>
-        <LNodeType lnClass="MSTA" id="FLTMSTA0_ED1_G_2">
+        <LNodeType id="FLTMSTA0_ED1_G_2" lnClass="MSTA">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="INC_Mod_OnOff_FD_2"/>
             <DO name="AmpsA" type="MV_simple_i_e"/>
@@ -1227,14 +1261,14 @@
             <DO name="AmpsC" type="MV_simple_i_e"/>
             <DO name="AmpsN" type="MV_simple_i_e"/>
         </LNodeType>
-        <LNodeType lnClass="RDRE" id="RDRE_1">
+        <LNodeType id="RDRE_1" lnClass="RDRE">
             <DO name="Beh" type="INS_beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="RcdMade" type="SPS"/>
             <DO name="FltNum" type="INS"/>
             <DO name="MemRs" type="SPC_simple_2"/>
         </LNodeType>
-        <LNodeType lnClass="PTEF" id="INTRPTEF">
+        <LNodeType id="INTRPTEF" lnClass="PTEF">
             <DO name="Beh" type="ENS_Beh"/>
             <DO name="Mod" type="ENC_Mod"/>
             <DO name="NamPlt" type="LPL_0"/>
@@ -1244,41 +1278,41 @@
             <DO name="Op" type="ACT_Op"/>
         </LNodeType>
         <DOType id="LPL_lnNs" cdc="LPL">
-            <DA count="0" name="vendor" valKind="RO" fc="DC" bType="VisString255"/>
-            <DA count="0" name="swRev" valKind="RO" fc="DC" bType="VisString255"/>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
-            <DA count="0" name="lnNs" valKind="Conf" fc="EX" bType="VisString255">
+            <DA name="vendor" bType="VisString255" count="0" fc="DC" valKind="RO"/>
+            <DA name="swRev" bType="VisString255" count="0" fc="DC" valKind="RO"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
+            <DA name="lnNs" bType="VisString255" count="0" fc="EX" valKind="Conf">
                 <Val>IEC 62271-3:2006</Val>
             </DA>
         </DOType>
         <DOType id="INS_beh" cdc="INS">
-            <DA count="0" name="stVal" fc="ST" type="Beh" bType="Enum" dchg="true">
+            <DA name="stVal" type="Beh" bType="Enum" count="0" dchg="true" fc="ST">
                 <Val>on</Val>
             </DA>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
         </DOType>
         <DOType id="INS_health" cdc="INS">
-            <DA count="0" name="stVal" fc="ST" type="Health" bType="Enum" dchg="true">
+            <DA name="stVal" type="Health" bType="Enum" count="0" dchg="true" fc="ST">
                 <Val>Ok</Val>
             </DA>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
         </DOType>
         <DOType id="LPL_CTRLDR_LNN0_1" cdc="LPL">
-            <DA count="0" name="vendor" valKind="RO" fc="DC" bType="VisString255"/>
-            <DA count="0" name="swRev" valKind="RO" fc="DC" bType="VisString255"/>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
-            <DA count="0" name="configRev" fc="DC" bType="VisString255"/>
-            <DA count="0" name="ldNs" valKind="RO" fc="EX" bType="VisString255"/>
+            <DA name="vendor" bType="VisString255" count="0" fc="DC" valKind="RO"/>
+            <DA name="swRev" bType="VisString255" count="0" fc="DC" valKind="RO"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
+            <DA name="configRev" bType="VisString255" count="0" fc="DC"/>
+            <DA name="ldNs" bType="VisString255" count="0" fc="EX" valKind="RO"/>
         </DOType>
         <DOType id="INC_Mod_OnOff_FD_2" cdc="INC">
-            <DA count="0" name="stVal" fc="ST" type="Mod" bType="Enum" dchg="true">
+            <DA name="stVal" type="Mod" bType="Enum" count="0" dchg="true" fc="ST">
                 <Val>on</Val>
             </DA>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="blockIn" valKind="RO" fc="EX" bType="BOOLEAN"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="blockIn" bType="BOOLEAN" count="0" fc="EX" valKind="RO"/>
         </DOType>
         <DOType id="WYE_neut" cdc="WYE">
             <SDO name="phsA" type="CMV"/>
@@ -1301,407 +1335,407 @@
             <SDO name="c1" type="CMV"/>
             <SDO name="c2" type="CMV"/>
             <SDO name="c3" type="CMV"/>
-            <DA name="seqT" fc="MX" type="SeqT_Enum" bType="Enum">
+            <DA name="seqT" type="SeqT_Enum" bType="Enum" fc="MX">
                 <Val>pos-neg-zero</Val>
             </DA>
         </DOType>
         <DOType id="CMV" cdc="CMV">
             <!-- <DA name="instCVal" fc="MX" bType="Struct" type="Vector" /> -->
-            <DA name="cVal" fc="MX" type="Vector_1" bType="Struct" dchg="true"/>
-            <DA name="q" fc="MX" bType="Quality" qchg="true"/>
-            <DA name="t" fc="MX" bType="Timestamp"/>
+            <DA name="cVal" type="Vector_1" bType="Struct" dchg="true" fc="MX"/>
+            <DA name="q" bType="Quality" fc="MX" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="MX"/>
         </DOType>
-        <DOType id="ENG_MeasMode_EXT" cdc="ING">
-            <DA fc="SP" name="setVal" type="MeasMode_Enum" bType="Enum"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ING" id="ENG_MeasMode_EXT">
+            <DA name="setVal" type="MeasMode_Enum" bType="Enum" fc="SP"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ENG_OpMod_EXT" cdc="ING">
-            <DA fc="SP" name="setVal" type="OpMod_Enum" bType="Enum"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ING" id="ENG_OpMod_EXT">
+            <DA name="setVal" type="OpMod_Enum" bType="Enum" fc="SP"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ENG_ClcMth" cdc="ING">
-            <DA fc="SP" name="setVal" type="ClcMth_Enum" bType="Enum"/>
+        <DOType cdc="ING" id="ENG_ClcMth">
+            <DA name="setVal" type="ClcMth_Enum" bType="Enum" fc="SP"/>
         </DOType>
-        <DOType id="ENG_ClcMth_RO" cdc="ING">
-            <DA fc="SP" valKind="RO" name="setVal" type="ClcMth_Enum" bType="Enum"/>
+        <DOType cdc="ING" id="ENG_ClcMth_RO">
+            <DA name="setVal" type="ClcMth_Enum" bType="Enum" fc="SP" valKind="RO"/>
         </DOType>
-        <DOType id="ENG_ClcMod" cdc="ING">
-            <DA fc="SP" valKind="RO" name="setVal" type="ClcMod_Enum" bType="Enum"/>
+        <DOType cdc="ING" id="ENG_ClcMod">
+            <DA name="setVal" type="ClcMod_Enum" bType="Enum" fc="SP" valKind="RO"/>
         </DOType>
-        <DOType id="ENG_ClcIntvTyp" cdc="ING">
-            <DA fc="SP" valKind="RO" name="setVal" type="ClcIntvTyp_Enum" bType="Enum"/>
+        <DOType cdc="ING" id="ENG_ClcIntvTyp">
+            <DA name="setVal" type="ClcIntvTyp_Enum" bType="Enum" fc="SP" valKind="RO"/>
         </DOType>
-        <DOType id="ENG_DirMod" cdc="ING">
-            <DA fc="SE" name="setVal" type="DirMod" bType="Enum">
+        <DOType cdc="ING" id="ENG_DirMod">
+            <DA name="setVal" type="DirMod" bType="Enum" fc="SE">
                 <Val>NonDirectional</Val>
             </DA>
         </DOType>
-        <DOType id="ENG_TypRsCrv_SE" cdc="ING">
-            <DA fc="SE" name="setVal" type="TypRsCrv_Enum" bType="Enum"/>
+        <DOType cdc="ING" id="ENG_TypRsCrv_SE">
+            <DA name="setVal" type="TypRsCrv_Enum" bType="Enum" fc="SE"/>
         </DOType>
-        <DOType id="ENG_TypRsCrv_SE_EXT" cdc="ING">
-            <DA fc="SE" name="setVal" type="TypRsCrv_Enum" bType="Enum"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ING" id="ENG_TypRsCrv_SE_EXT">
+            <DA name="setVal" type="TypRsCrv_Enum" bType="Enum" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ENG_TrOutMod_EXT" cdc="ING">
-            <DA fc="SP" name="setVal" type="TrOutMod_Enum" bType="Enum"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ING" id="ENG_TrOutMod_EXT">
+            <DA name="setVal" type="TrOutMod_Enum" bType="Enum" fc="SP"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ENC_Mod" cdc="INC">
-            <DA fc="CO" name="Oper" type="ENCOperate" bType="Struct"/>
-            <DA fc="ST" name="stVal" type="Beh" bType="Enum" dchg="true"/>
-            <DA fc="ST" name="q" bType="Quality" qchg="true"/>
-            <DA fc="ST" name="t" bType="Timestamp"/>
-            <DA fc="CF" name="ctlModel" valKind="RO" type="ctlModelEnum" bType="Enum">
+        <DOType cdc="INC" id="ENC_Mod">
+            <DA name="Oper" type="ENCOperate" bType="Struct" fc="CO"/>
+            <DA name="stVal" type="Beh" bType="Enum" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA name="ctlModel" type="ctlModelEnum" bType="Enum" fc="CF" valKind="RO">
                 <Val>direct-with-normal-security</Val>
             </DA>
         </DOType>
-        <DOType id="ENC_Mod_status_only" cdc="INC">
-            <DA fc="ST" name="stVal" type="Beh" bType="Enum" dchg="true"/>
-            <DA fc="ST" name="q" bType="Quality" qchg="true"/>
-            <DA fc="ST" name="t" bType="Timestamp"/>
-            <DA fc="CF" name="ctlModel" valKind="RO" type="ctlModelEnum" bType="Enum">
+        <DOType cdc="INC" id="ENC_Mod_status_only">
+            <DA name="stVal" type="Beh" bType="Enum" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA name="ctlModel" type="ctlModelEnum" bType="Enum" fc="CF" valKind="RO">
                 <Val>status-only</Val>
             </DA>
         </DOType>
         <DOType id="SPS" cdc="SPS">
-            <DA name="stVal" fc="ST" bType="BOOLEAN" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
+            <DA name="stVal" bType="BOOLEAN" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
         </DOType>
         <DOType id="SPS_d" cdc="SPS">
-            <DA count="0" name="stVal" fc="ST" bType="BOOLEAN" dchg="true"/>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
+            <DA name="stVal" bType="BOOLEAN" count="0" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
         </DOType>
         <DOType id="SPC_2_SPCSO1" cdc="SPC">
-            <DA name="stVal" fc="ST" bType="BOOLEAN" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="SBO" fc="CO" bType="VisString64"/>
-            <DA name="Oper" fc="CO" type="SPCOperate_1" bType="Struct"/>
-            <DA name="Cancel" fc="CO" type="SPCCancel" bType="Struct"/>
-            <DA name="ctlModel" fc="CF" type="ctlModelEnum" bType="Enum">
+            <DA name="stVal" bType="BOOLEAN" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="SBO" bType="VisString64" fc="CO"/>
+            <DA name="Oper" type="SPCOperate_1" bType="Struct" fc="CO"/>
+            <DA name="Cancel" type="SPCCancel" bType="Struct" fc="CO"/>
+            <DA name="ctlModel" type="ctlModelEnum" bType="Enum" fc="CF">
                 <Val>direct-with-normal-security</Val>
             </DA>
-            <DA name="t" fc="ST" bType="Timestamp"/>
-            <DA name="sboTimeout" fc="CF" bType="INT32U"/>
-            <DA name="sboClass" fc="CF" type="sboClass" bType="Enum"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA name="sboTimeout" bType="INT32U" fc="CF"/>
+            <DA name="sboClass" type="sboClass" bType="Enum" fc="CF"/>
         </DOType>
-        <DOType id="SPS_EXT" cdc="SPS">
-            <DA fc="ST" name="stVal" bType="BOOLEAN" dchg="true"/>
-            <DA fc="ST" name="q" bType="Quality" qchg="true"/>
-            <DA fc="ST" name="t" bType="Timestamp"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="SPS" id="SPS_EXT">
+            <DA name="stVal" bType="BOOLEAN" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ACD_Str" cdc="ACD">
-            <DA fc="ST" name="general" bType="BOOLEAN" dchg="true"/>
-            <DA fc="ST" name="dirGeneral" type="dirGeneral" bType="Enum" dchg="true"/>
-            <DA fc="ST" name="q" bType="Quality" qchg="true"/>
-            <DA fc="ST" name="t" bType="Timestamp"/>
+        <DOType cdc="ACD" id="ACD_Str">
+            <DA name="general" bType="BOOLEAN" dchg="true" fc="ST"/>
+            <DA name="dirGeneral" type="dirGeneral" bType="Enum" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
         </DOType>
-        <DOType id="ACT_Op" cdc="ACT">
-            <DA fc="ST" name="general" bType="BOOLEAN" dchg="true"/>
-            <DA fc="ST" name="q" bType="Quality" qchg="true"/>
-            <DA fc="ST" name="t" bType="Timestamp"/>
+        <DOType cdc="ACT" id="ACT_Op">
+            <DA name="general" bType="BOOLEAN" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
         </DOType>
-        <DOType id="CURVE_SE" cdc="CURVE">
-            <DA fc="SE" name="setCharact" type="setCharact" bType="Enum"/>
+        <DOType cdc="CURVE" id="CURVE_SE">
+            <DA name="setCharact" type="setCharact" bType="Enum" fc="SE"/>
         </DOType>
-        <DOType id="CURVE_SE_EXT" cdc="CURVE">
-            <DA fc="SE" name="setCharact" type="setCharact" bType="Enum"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="CURVE" id="CURVE_SE_EXT">
+            <DA name="setCharact" type="setCharact" bType="Enum" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ASG" cdc="ASG">
-            <DA fc="SP" name="setMag" type="AnalogueValue_1" bType="Struct"/>
+        <DOType cdc="ASG" id="ASG">
+            <DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SP"/>
         </DOType>
-        <DOType id="ASG_EXT" cdc="ASG">
-            <DA fc="SP" name="setMag" type="AnalogueValue_1" bType="Struct"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ASG" id="ASG_EXT">
+            <DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SP"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ASG_SE" cdc="ASG">
-            <DA fc="SE" name="setMag" type="AnalogueValue_1" bType="Struct"/>
+        <DOType cdc="ASG" id="ASG_SE">
+            <DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SE"/>
         </DOType>
-        <DOType id="ASG_SE_EXT" cdc="ASG">
-            <DA fc="SE" name="setMag" type="AnalogueValue_1" bType="Struct"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ASG" id="ASG_SE_EXT">
+            <DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
-        <DOType id="ASG_SE_EXT_s" cdc="ASG">
-            <DA fc="SE" name="setMag" type="AnalogueValue_1" bType="Struct"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ASG" id="ASG_SE_EXT_s">
+            <DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
-            <DA fc="CF" name="units" type="Unit_s" bType="Struct"/>
+            <DA name="units" type="Unit_s" bType="Struct" fc="CF"/>
         </DOType>
-        <DOType id="ASG_SE_EXT_A" cdc="ASG">
-            <DA fc="SE" name="setMag" type="AnalogueValue_1" bType="Struct"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ASG" id="ASG_SE_EXT_A">
+            <DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
-            <DA fc="CF" name="units" type="Unit_A" bType="Struct"/>
+            <DA name="units" type="Unit_A" bType="Struct" fc="CF"/>
         </DOType>
-        <DOType id="ASG_SE_EXT_W" cdc="ASG">
-            <DA fc="SE" name="setMag" type="AnalogueValue_1" bType="Struct"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+        <DOType cdc="ASG" id="ASG_SE_EXT_W">
+            <DA name="setMag" type="AnalogueValue_1" bType="Struct" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
-            <DA fc="CF" name="units" type="Unit_W" bType="Struct"/>
+            <DA name="units" type="Unit_W" bType="Struct" fc="CF"/>
         </DOType>
         <DOType id="BCR" cdc="BCR">
-            <DA name="actVal" fc="ST" bType="INT64" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
-            <DA name="pulsQty" fc="CF" valKind="RO" bType="FLOAT32">
+            <DA name="actVal" bType="INT64" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA name="pulsQty" bType="FLOAT32" fc="CF" valKind="RO">
                 <Val>1.0</Val>
             </DA>
         </DOType>
         <DOType id="MV" cdc="MV">
-            <DA name="mag" fc="MX" type="AnalogueValue_1" bType="Struct" dchg="true"/>
-            <DA name="q" fc="MX" bType="Quality" qchg="true"/>
-            <DA name="t" fc="MX" bType="Timestamp"/>
+            <DA name="mag" type="AnalogueValue_1" bType="Struct" dchg="true" fc="MX"/>
+            <DA name="q" bType="Quality" fc="MX" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="MX"/>
         </DOType>
         <DOType id="SPG_EXT" cdc="SPG">
-            <DA name="setVal" fc="SP" bType="BOOLEAN" dchg="true"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+            <DA name="setVal" bType="BOOLEAN" dchg="true" fc="SP"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
         <DOType id="SPG_ProOff" cdc="SPG">
-            <DA name="setVal" fc="SE" bType="BOOLEAN" dchg="true"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+            <DA name="setVal" bType="BOOLEAN" dchg="true" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
         <DOType id="SPG_SE_EXT" cdc="SPG">
-            <DA name="setVal" fc="SE" bType="BOOLEAN" dchg="true"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+            <DA name="setVal" bType="BOOLEAN" dchg="true" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
         <DOType id="ING" cdc="ING">
-            <DA name="setVal" fc="SP" bType="INT32" dchg="true"/>
+            <DA name="setVal" bType="INT32" dchg="true" fc="SP"/>
         </DOType>
         <DOType id="ING_RO" cdc="ING">
-            <DA name="setVal" fc="SP" valKind="RO" bType="INT32" dchg="true"/>
+            <DA name="setVal" bType="INT32" dchg="true" fc="SP" valKind="RO"/>
         </DOType>
         <DOType id="ING_EXT" cdc="ING">
-            <DA name="setVal" fc="SP" bType="INT32" dchg="true"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+            <DA name="setVal" bType="INT32" dchg="true" fc="SP"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
         <DOType id="ING_SE" cdc="ING">
-            <DA name="setVal" fc="SE" bType="INT32" dchg="true"/>
+            <DA name="setVal" bType="INT32" dchg="true" fc="SE"/>
         </DOType>
         <DOType id="ING_SE_EXT" cdc="ING">
-            <DA name="setVal" fc="SE" bType="INT32" dchg="true"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+            <DA name="setVal" bType="INT32" dchg="true" fc="SE"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
         <DOType id="ENS_Beh" cdc="ENS">
-            <DA name="stVal" fc="ST" type="Beh" bType="Enum" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
+            <DA name="stVal" type="Beh" bType="Enum" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
         </DOType>
         <DOType id="ENS_Health" cdc="ENS">
-            <DA name="stVal" fc="ST" type="healthEnum" bType="Enum" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
+            <DA name="stVal" type="healthEnum" bType="Enum" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
         </DOType>
         <DOType id="LPL_1_NamPlt" cdc="LPL">
-            <DA name="vendor" fc="DC" bType="VisString255"/>
-            <DA name="swRev" fc="DC" bType="VisString255"/>
-            <DA name="d" fc="DC" bType="VisString255"/>
-            <DA name="configRev" fc="DC" bType="VisString255"/>
-            <DA name="ldNs" fc="EX" bType="VisString255"/>
+            <DA name="vendor" bType="VisString255" fc="DC"/>
+            <DA name="swRev" bType="VisString255" fc="DC"/>
+            <DA name="d" bType="VisString255" fc="DC"/>
+            <DA name="configRev" bType="VisString255" fc="DC"/>
+            <DA name="ldNs" bType="VisString255" fc="EX"/>
         </DOType>
         <DOType id="DPL_1_PhyNam" cdc="DPL">
-            <DA name="vendor" fc="DC" bType="VisString255"/>
-            <DA name="hwRev" fc="DC" bType="VisString255"/>
-            <DA name="swRev" fc="DC" bType="VisString255"/>
-            <DA name="serNum" fc="DC" bType="VisString255"/>
-            <DA name="model" fc="DC" bType="VisString255"/>
-            <DA name="location" fc="DC" bType="VisString255"/>
+            <DA name="vendor" bType="VisString255" fc="DC"/>
+            <DA name="hwRev" bType="VisString255" fc="DC"/>
+            <DA name="swRev" bType="VisString255" fc="DC"/>
+            <DA name="serNum" bType="VisString255" fc="DC"/>
+            <DA name="model" bType="VisString255" fc="DC"/>
+            <DA name="location" bType="VisString255" fc="DC"/>
         </DOType>
         <DOType id="MV_EXT" cdc="MV">
-            <DA name="mag" fc="MX" type="AnalogueValue_1" bType="Struct" dchg="true"/>
-            <DA name="q" fc="MX" bType="Quality" qchg="true"/>
-            <DA name="t" fc="MX" bType="Timestamp"/>
-            <DA name="dataNs" fc="EX" bType="VisString255">
+            <DA name="mag" type="AnalogueValue_1" bType="Struct" dchg="true" fc="MX"/>
+            <DA name="q" bType="Quality" fc="MX" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="MX"/>
+            <DA name="dataNs" bType="VisString255" fc="EX">
                 <Val>DEMA-MF-RELAY:2014A</Val>
             </DA>
         </DOType>
         <DOType id="INC_Mod_On" cdc="INC">
-            <DA count="0" name="stVal" fc="ST" type="Mod" bType="Enum" dchg="true">
+            <DA name="stVal" type="Mod" bType="Enum" count="0" dchg="true" fc="ST">
                 <Val>on</Val>
             </DA>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="ctlModel" valKind="RO" fc="CF" type="ctlModel_Status_1" bType="Enum">
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="ctlModel" type="ctlModel_Status_1" bType="Enum" count="0" fc="CF" valKind="RO">
                 <Val>status-only</Val>
             </DA>
         </DOType>
         <DOType id="INC_1" cdc="INC">
-            <DA name="stVal" fc="ST" bType="INT32" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
-            <DA name="ctlModel" fc="CF" type="ctlModelEnum" bType="Enum"/>
+            <DA name="stVal" bType="INT32" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA type="ctlModelEnum" name="ctlModel" bType="Enum" fc="CF"/>
         </DOType>
         <DOType id="INS_2" cdc="INS">
-            <DA name="stVal" fc="ST" bType="INT32" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
+            <DA name="stVal" bType="INT32" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
         </DOType>
         <DOType id="LPL_0" cdc="LPL">
-            <DA name="vendor" fc="DC" bType="VisString255"/>
-            <DA name="swRev" fc="DC" bType="VisString255"/>
-            <DA name="d" fc="DC" bType="VisString255"/>
+            <DA name="vendor" bType="VisString255" fc="DC"/>
+            <DA name="swRev" bType="VisString255" fc="DC"/>
+            <DA name="d" bType="VisString255" fc="DC"/>
         </DOType>
         <DOType desc="Controllable double point" id="DPC_1" cdc="DPC">
-            <DA name="Oper" fc="CO" type="DPCOperate_0" bType="Struct"/>
-            <DA name="stVal" fc="ST" bType="Dbpos" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
-            <DA name="ctlModel" fc="CF" type="ctlModelEnum" bType="Enum"/>
+            <DA type="DPCOperate_0" name="Oper" bType="Struct" fc="CO"/>
+            <DA name="stVal" bType="Dbpos" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA type="ctlModelEnum" name="ctlModel" bType="Enum" fc="CF"/>
         </DOType>
         <DOType desc="Controllable double point" id="DPC_2" cdc="DPC">
-            <DA name="stVal" fc="ST" bType="Dbpos" dchg="true"/>
-            <DA name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA name="t" fc="ST" bType="Timestamp"/>
-            <DA name="ctlModel" fc="CF" type="ctlModelEnum" bType="Enum"/>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
+            <DA name="stVal" bType="Dbpos" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" fc="ST"/>
+            <DA type="ctlModelEnum" name="ctlModel" bType="Enum" fc="CF"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
         </DOType>
         <DOType id="INS_cbopcap" cdc="INS">
-            <DA count="0" name="stVal" fc="ST" type="CBOpCap" bType="Enum" dchg="true">
+            <DA name="stVal" type="CBOpCap" bType="Enum" count="0" dchg="true" fc="ST">
                 <Val>Close-Open</Val>
             </DA>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
         </DOType>
         <DOType id="SPC_simple_1" cdc="SPC">
-            <DA count="0" name="stVal" fc="ST" bType="BOOLEAN" dchg="true"/>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="ctlModel" valKind="RO" fc="CF" type="ctlModel_Status_1" bType="Enum">
+            <DA name="stVal" bType="BOOLEAN" count="0" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="ctlModel" type="ctlModel_Status_1" bType="Enum" count="0" fc="CF" valKind="RO">
                 <Val>status-only</Val>
             </DA>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
         </DOType>
         <DOType id="INC_Mod_OnOff_2" cdc="INC">
-            <DA count="0" name="Oper" fc="CO" type="tcOper_Mod_OnOff" bType="Struct"/>
-            <DA count="0" name="stVal" fc="ST" type="Mod" bType="Enum" dchg="true">
+            <DA name="Oper" type="tcOper_Mod_OnOff" bType="Struct" count="0" fc="CO"/>
+            <DA name="stVal" type="Mod" bType="Enum" count="0" dchg="true" fc="ST">
                 <Val>on</Val>
             </DA>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="ctlModel" valKind="RO" fc="CF" type="ctlModel_StatusDirect_1" bType="Enum">
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="ctlModel" type="ctlModel_StatusDirect_1" bType="Enum" count="0" fc="CF" valKind="RO">
                 <Val>direct-with-normal-security</Val>
             </DA>
-            <DA count="0" name="cdcName" valKind="Conf" fc="EX" bType="VisString255">
+            <DA name="cdcName" bType="VisString255" count="0" fc="EX" valKind="Conf">
                 <Val>INC_Mod_OnOff</Val>
             </DA>
-            <DA count="0" name="blockIn" valKind="RO" fc="EX" bType="BOOLEAN"/>
+            <DA name="blockIn" bType="BOOLEAN" count="0" fc="EX" valKind="RO"/>
         </DOType>
         <DOType id="ING_SP_e" cdc="ING">
-            <DA count="0" name="setVal" fc="SP" bType="INT32"/>
-            <DA count="0" name="minVal" valKind="RO" fc="CF" bType="INT32">
+            <DA name="setVal" bType="INT32" count="0" fc="SP"/>
+            <DA name="minVal" bType="INT32" count="0" fc="CF" valKind="RO">
                 <Val>0</Val>
             </DA>
-            <DA count="0" name="maxVal" valKind="RO" fc="CF" bType="INT32"/>
-            <DA count="0" name="stepSize" valKind="RO" fc="CF" bType="INT32U">
+            <DA name="maxVal" bType="INT32" count="0" fc="CF" valKind="RO"/>
+            <DA name="stepSize" bType="INT32U" count="0" fc="CF" valKind="RO">
                 <Val>1</Val>
             </DA>
         </DOType>
         <DOType id="SPS_e" cdc="SPS">
-            <DA count="0" name="stVal" fc="ST" bType="BOOLEAN" dchg="true"/>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
-            <DA count="0" name="dataNs" valKind="Conf" fc="EX" bType="VisString255">
+            <DA name="stVal" bType="BOOLEAN" count="0" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
+            <DA name="dataNs" bType="VisString255" count="0" fc="EX" valKind="Conf">
                 <Val>IEC 61850-7-4:2003</Val>
             </DA>
         </DOType>
         <DOType id="INS" cdc="INS">
-            <DA count="0" name="stVal" fc="ST" bType="INT32" dchg="true"/>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
+            <DA name="stVal" bType="INT32" count="0" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
         </DOType>
         <DOType id="MV_simple_i_e" cdc="MV">
-            <DA count="0" name="mag" fc="MX" type="AnalogueValue_if" bType="Struct" dchg="true"/>
-            <DA count="0" name="q" fc="MX" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="MX" bType="Timestamp"/>
-            <DA count="0" name="units" valKind="RO" fc="CF" type="Unit" bType="Struct"/>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
+            <DA name="mag" type="AnalogueValue_if" bType="Struct" count="0" dchg="true" fc="MX"/>
+            <DA name="q" bType="Quality" count="0" fc="MX" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="MX"/>
+            <DA name="units" type="Unit" bType="Struct" count="0" fc="CF" valKind="RO"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
         </DOType>
         <DOType id="ActSG_1" cdc="INC">
-            <DA count="0" name="Oper" fc="CO" type="ActSG_Oper_INC_INT32" bType="Struct"/>
-            <DA count="0" name="stVal" fc="ST" bType="INT32" dchg="true"/>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="ctlModel" valKind="RO" fc="CF" type="ctlModel_StatusDirect_1" bType="Enum">
+            <DA name="Oper" type="ActSG_Oper_INC_INT32" bType="Struct" count="0" fc="CO"/>
+            <DA name="stVal" bType="INT32" count="0" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="ctlModel" type="ctlModel_StatusDirect_1" bType="Enum" count="0" fc="CF" valKind="RO">
                 <Val>direct-with-normal-security</Val>
             </DA>
-            <DA count="0" name="minVal" valKind="RO" fc="CF" bType="INT32"/>
-            <DA count="0" name="maxVal" valKind="RO" fc="CF" bType="INT32"/>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
+            <DA name="minVal" bType="INT32" count="0" fc="CF" valKind="RO"/>
+            <DA name="maxVal" bType="INT32" count="0" fc="CF" valKind="RO"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
         </DOType>
         <DOType id="ActSG_2" cdc="SPC">
-            <DA count="0" name="stVal" fc="ST" bType="BOOLEAN" dchg="true"/>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="ctlModel" valKind="RO" fc="CF" type="ctlModel_Status_1" bType="Enum">
+            <DA name="stVal" bType="BOOLEAN" count="0" dchg="true" fc="ST"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="ctlModel" type="ctlModel_Status_1" bType="Enum" count="0" fc="CF" valKind="RO">
                 <Val>status-only</Val>
             </DA>
-            <DA count="0" name="d" fc="DC" bType="VisString255"/>
+            <DA name="d" bType="VisString255" count="0" fc="DC"/>
         </DOType>
         <DOType id="SPC_simple_2" cdc="SPC">
-            <DA count="0" name="stVal" fc="ST" bType="BOOLEAN" dchg="true"/>
-            <DA count="0" name="Oper" fc="CO" type="SPCOperate_1" bType="Struct"/>
-            <DA count="0" name="q" fc="ST" bType="Quality" qchg="true"/>
-            <DA count="0" name="t" fc="ST" bType="Timestamp"/>
-            <DA count="0" name="ctlModel" valKind="RO" fc="CF" type="ctlModel_StatusDirect_1" bType="Enum">
+            <DA name="stVal" bType="BOOLEAN" count="0" dchg="true" fc="ST"/>
+            <DA name="Oper" type="SPCOperate_1" bType="Struct" count="0" fc="CO"/>
+            <DA name="q" bType="Quality" count="0" fc="ST" qchg="true"/>
+            <DA name="t" bType="Timestamp" count="0" fc="ST"/>
+            <DA name="ctlModel" type="ctlModel_StatusDirect_1" bType="Enum" count="0" fc="CF" valKind="RO">
                 <Val>direct-with-normal-security</Val>
             </DA>
         </DOType>
         <DAType id="ActSG_Oper_INC_INT32">
-            <BDA count="0" name="ctlVal" bType="INT32"/>
-            <BDA count="0" name="origin" type="Originator" bType="Struct"/>
-            <BDA count="0" name="ctlNum" bType="INT8U"/>
-            <BDA count="0" name="T" bType="Timestamp"/>
-            <BDA count="0" name="Test" bType="BOOLEAN"/>
-            <BDA count="0" name="Check" bType="Check"/>
+            <BDA name="ctlVal" bType="INT32" count="0"/>
+            <BDA name="origin" type="Originator" bType="Struct" count="0"/>
+            <BDA name="ctlNum" bType="INT8U" count="0"/>
+            <BDA name="T" bType="Timestamp" count="0"/>
+            <BDA name="Test" bType="BOOLEAN" count="0"/>
+            <BDA name="Check" bType="Check" count="0"/>
         </DAType>
         <DAType id="AnalogueValue_if">
-            <BDA count="0" name="f" bType="FLOAT32"/>
+            <BDA name="f" bType="FLOAT32" count="0"/>
         </DAType>
         <DAType id="Unit">
-            <BDA count="0" name="SIUnit" type="SIUnit" bType="Enum"/>
-            <BDA count="0" name="multiplier" type="multiplier" bType="Enum"/>
+            <BDA name="SIUnit" type="SIUnit" bType="Enum" count="0"/>
+            <BDA name="multiplier" type="multiplier" bType="Enum" count="0"/>
         </DAType>
         <DAType id="tcOper_Mod_OnOff">
-            <BDA count="0" name="ctlVal" type="Mod_OnOff_1" bType="Enum"/>
-            <BDA count="0" name="origin" type="Originator" bType="Struct"/>
-            <BDA count="0" name="ctlNum" bType="INT8U"/>
-            <BDA count="0" name="T" bType="Timestamp"/>
-            <BDA count="0" name="Test" bType="BOOLEAN"/>
-            <BDA count="0" name="Check" bType="Check"/>
+            <BDA name="ctlVal" type="Mod_OnOff_1" bType="Enum" count="0"/>
+            <BDA name="origin" type="Originator" bType="Struct" count="0"/>
+            <BDA name="ctlNum" bType="INT8U" count="0"/>
+            <BDA name="T" bType="Timestamp" count="0"/>
+            <BDA name="Test" bType="BOOLEAN" count="0"/>
+            <BDA name="Check" bType="Check" count="0"/>
         </DAType>
         <DAType id="ENCOperate">
             <BDA name="ctlVal" type="Beh" bType="Enum"/>
@@ -1718,22 +1752,22 @@
             <BDA name="mag" type="AnalogueValue_1" bType="Struct"/>
         </DAType>
         <DAType id="Unit_s">
-            <BDA name="SIUnit" valKind="RO" type="SIUnit" bType="Enum">
+            <BDA name="SIUnit" type="SIUnit" bType="Enum" valKind="RO">
                 <Val>s</Val>
             </BDA>
-            <BDA name="multiplier" valKind="RO" type="multiplier" bType="Enum"/>
+            <BDA name="multiplier" type="multiplier" bType="Enum" valKind="RO"/>
         </DAType>
         <DAType id="Unit_A">
-            <BDA name="SIUnit" valKind="RO" type="SIUnit" bType="Enum">
+            <BDA name="SIUnit" type="SIUnit" bType="Enum" valKind="RO">
                 <Val>A</Val>
             </BDA>
-            <BDA name="multiplier" valKind="RO" type="multiplier" bType="Enum"/>
+            <BDA name="multiplier" type="multiplier" bType="Enum" valKind="RO"/>
         </DAType>
         <DAType id="Unit_W">
-            <BDA name="SIUnit" valKind="RO" type="SIUnit" bType="Enum">
+            <BDA name="SIUnit" type="SIUnit" bType="Enum" valKind="RO">
                 <Val>W</Val>
             </BDA>
-            <BDA name="multiplier" valKind="RO" type="multiplier" bType="Enum"/>
+            <BDA name="multiplier" type="multiplier" bType="Enum" valKind="RO"/>
         </DAType>
         <DAType id="Originator">
             <BDA name="orCat" type="orCatEnum" bType="Enum"/>
@@ -1743,14 +1777,14 @@
         </DAType>
         <DAType id="DPCOperate_0">
             <BDA name="ctlVal" bType="BOOLEAN"/>
-            <BDA name="origin" type="Originator_0" bType="Struct"/>
+            <BDA type="Originator_0" name="origin" bType="Struct"/>
             <BDA name="ctlNum" bType="INT8U"/>
             <BDA name="T" bType="Timestamp"/>
             <BDA name="Test" bType="BOOLEAN"/>
             <BDA name="Check" bType="Check"/>
         </DAType>
         <DAType id="Originator_0">
-            <BDA name="orCat" type="orCategory" bType="Enum"/>
+            <BDA type="orCategory" name="orCat" bType="Enum"/>
             <BDA name="orIdent" bType="Octet64"/>
         </DAType>
         <DAType id="SPCOperate_1">

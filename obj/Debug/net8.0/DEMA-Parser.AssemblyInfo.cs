@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("DEMA-Parser")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9f6b85b552df438c1711a137d0f34e27d2d23209")]
 [assembly: System.Reflection.AssemblyProductAttribute("DEMA-Parser")]
 [assembly: System.Reflection.AssemblyTitleAttribute("DEMA-Parser")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

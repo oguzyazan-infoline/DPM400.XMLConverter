@@ -28,13 +28,14 @@ namespace DEMA_Parser
             { "PNV", "Phase-to-Neutral Voltage" }, { "Hz", "Frequency" },
             { "MemRs", "Reset Memory" }, { "RcdMade", "Record Made" }, { "FltNum", "Fault Number" },
         };
+
         public static XDocument ConvertDpmToHierarchical(string dpmSclContent)
         {
             XDocument dpmDoc = XDocument.Parse(dpmSclContent, LoadOptions.None);
             XNamespace ns = dpmDoc.Root?.GetDefaultNamespace() ?? XNamespace.None;
             if (ns == XNamespace.None || dpmDoc.Root == null) return new XDocument(new XElement("Error", "Invalid SCL file format."));
 
-            var outputRoot = new XElement("IEC61850Parameters", new XAttribute("Model", "DEMA_DPM400D"));
+            var outputRoot = new XElement("IEC61850Parameters", new XAttribute("Model", "DEMA_DPM400D_08"));
             var outputDoc = new XDocument(outputRoot);
 
             var lNodeTypes = dpmDoc.Descendants(ns + "LNodeType").ToDictionary(x => x.Attribute("id")?.Value ?? "", x => x);
@@ -42,14 +43,18 @@ namespace DEMA_Parser
             var enumTypes = dpmDoc.Descendants(ns + "EnumType").ToDictionary(x => x.Attribute("id")?.Value ?? "", x => x);
             var daTypes = dpmDoc.Descendants(ns + "DAType").ToDictionary(x => x.Attribute("id")?.Value ?? "", x => x);
 
-
             var settingControl = dpmDoc.Descendants(ns + "SettingControl").FirstOrDefault();
             int numOfSettingGroups = settingControl != null ? int.Parse(settingControl.Attribute("numOfSGs")?.Value ?? "1") : 1;
+
+            string iedName = dpmDoc.Descendants(ns + "IED").FirstOrDefault()?.Attribute("name")?.Value ?? "IED1";
+            string iedPrefix = "A612H04"; // This can be customized if needed for other models.
 
             foreach (var lDevice in dpmDoc.Descendants(ns + "LDevice"))
             {
                 string lDeviceInst = lDevice.Attribute("inst")?.Value ?? "UnknownLDevice";
-                var lDeviceGroup = new XElement("Group", new XAttribute("Name", $"LDevice - {lDeviceInst}"));
+                string fullLdName = iedPrefix + lDeviceInst;
+
+                var lDeviceGroup = new XElement("Group", new XAttribute("Name", $"LDevice - {fullLdName}"));
                 outputRoot.Add(lDeviceGroup);
 
                 foreach (var ln in lDevice.Elements(ns + "LN").Concat(lDevice.Elements(ns + "LN0")))
@@ -68,18 +73,22 @@ namespace DEMA_Parser
 
                     var settingsContainer = new XElement("Group", new XAttribute("Name", "General Settings"));
                     var controlsContainer = new XElement("Group", new XAttribute("Name", "Controls"));
+                    var statusContainer = new XElement("Group", new XAttribute("Name", "Status"));
+                    var measurementsContainer = new XElement("Group", new XAttribute("Name", "Measurements"));
 
                     foreach (var doElement in lnTypeDef.Elements(ns + "DO"))
                     {
                         string doTypeId = doElement.Attribute("type")?.Value ?? "";
                         if (doTypes.TryGetValue(doTypeId, out var doTypeDef))
                         {
-                            ProcessDataObjectRecursive(ln, doElement, doTypeDef, "", functionBlockGroup, settingsContainer, controlsContainer, numOfSettingGroups, doTypes, daTypes, enumTypes, ns);
+                            ProcessDataObjectRecursive(ln, doElement, doTypeDef, "", functionBlockGroup, settingsContainer, controlsContainer, statusContainer, measurementsContainer, numOfSettingGroups, doTypes, daTypes, enumTypes, ns, fullLdName);
                         }
                     }
 
                     if (settingsContainer.HasElements) functionBlockGroup.Add(settingsContainer);
                     if (controlsContainer.HasElements) functionBlockGroup.Add(controlsContainer);
+                    if (statusContainer.HasElements) functionBlockGroup.Add(statusContainer);
+                    if (measurementsContainer.HasElements) functionBlockGroup.Add(measurementsContainer);
                 }
             }
 
@@ -87,7 +96,7 @@ namespace DEMA_Parser
             return outputDoc;
         }
 
-        private static void ProcessDataObjectRecursive(XElement ln, XElement doOrSdoElement, XElement typeDef, string currentPath, XElement functionBlockGroup, XElement settings, XElement controls, int numOfGroups, Dictionary<string, XElement> doTypes, Dictionary<string, XElement> daTypes, Dictionary<string, XElement> enumTypes, XNamespace ns)
+        private static void ProcessDataObjectRecursive(XElement ln, XElement doOrSdoElement, XElement typeDef, string currentPath, XElement functionBlockGroup, XElement settings, XElement controls, XElement status, XElement measurements, int numOfGroups, Dictionary<string, XElement> doTypes, Dictionary<string, XElement> daTypes, Dictionary<string, XElement> enumTypes, XNamespace ns, string fullLdName)
         {
             string name = doOrSdoElement.Attribute("name")?.Value ?? "";
             string newPath = string.IsNullOrEmpty(currentPath) ? name : $"{currentPath}.{name}";
@@ -110,15 +119,15 @@ namespace DEMA_Parser
                 {
                     if (fc == "SE")
                     {
-                        for (int i = 1; i <= numOfGroups; i++)
+                        for (int i = 1; i <= 1; i++) // Using 1 to generate only one setting group for now.
                         {
                             var settingGroup = FindOrCreateGroup(functionBlockGroup, new[] { "Settings", $"Setting Group {i}" });
-                            CreateParameter(settingGroup, i, ln, newPath, da, daTypes, enumTypes, ns);
+                            CreateParameter(settingGroup, i, fullLdName, ln, newPath, da, daTypes, enumTypes, ns);
                         }
                     }
                     else
                     {
-                        CreateParameter(container, null, ln, newPath, da, daTypes, enumTypes, ns);
+                        CreateParameter(container, null, fullLdName, ln, newPath, da, daTypes, enumTypes, ns);
                     }
                 }
             }
@@ -128,16 +137,15 @@ namespace DEMA_Parser
                 string sdoTypeId = sdo.Attribute("type")?.Value ?? "";
                 if (doTypes.TryGetValue(sdoTypeId, out var sdoTypeDef))
                 {
-                    ProcessDataObjectRecursive(ln, sdo, sdoTypeDef, newPath, functionBlockGroup, settings, controls, numOfGroups, doTypes, daTypes, enumTypes, ns);
+                    ProcessDataObjectRecursive(ln, sdo, sdoTypeDef, newPath, functionBlockGroup, settings, controls, status, measurements, numOfGroups, doTypes, daTypes, enumTypes, ns, fullLdName);
                 }
             }
         }
 
-        private static void CreateParameter(XElement parentElement, int? groupNo, XElement ln, string doPath, XElement daElement, Dictionary<string, XElement> daTypes, Dictionary<string, XElement> enumTypes, XNamespace ns)
+        private static void CreateParameter(XElement parentElement, int? groupNo, string fullLdName, XElement ln, string doPath, XElement daElement, Dictionary<string, XElement> daTypes, Dictionary<string, XElement> enumTypes, XNamespace ns)
         {
             if (ln.Parent == null) return;
 
-            string ldInst = ln.Parent.Attribute("inst")?.Value ?? "";
             string prefix = ln.Attribute("prefix")?.Value ?? "";
             string lnClass = ln.Attribute("lnClass")?.Value ?? "";
             string lnInst = ln.Attribute("inst")?.Value ?? "";
@@ -146,7 +154,7 @@ namespace DEMA_Parser
             string typeAttr = daElement.Attribute("type")?.Value ?? "";
             string fc = daElement.Attribute("fc")?.Value ?? "";
 
-            string objectAddress = $"IED1{ldInst}/{prefix}{lnClass}{lnInst}.{doPath}.{daName}";
+            string objectAddress = $"{fullLdName}/{prefix}{lnClass}{lnInst}.{doPath}.{daName}";
             string baseName = doPath.Split('.').First();
             string friendlyName = FriendlyNames.ContainsKey(baseName) ? FriendlyNames[baseName] : baseName;
 
@@ -154,7 +162,7 @@ namespace DEMA_Parser
             {
                 friendlyName += $" ({doPath.Split('.').Last()}.{daName})";
             }
-            else if (daName != "setVal" && daName != "ctlVal" && daName != "general")
+            else if (daName != "setVal" && daName != "ctlVal" && daName != "general" && daName != "stVal" && daName != "mag")
             {
                 friendlyName += $" ({daName})";
             }
@@ -245,6 +253,10 @@ namespace DEMA_Parser
             {
                 return "Float";
             }
+            if ((fc == "MX" || fc == "ST") && (daName == "mag" || daName == "f" || daName == "instMag"))
+            {
+                return "Float";
+            }
 
             return GetFriendlyDataType(bType);
         }
@@ -277,6 +289,7 @@ namespace DEMA_Parser
                 case "INT32U": return "Integer";
                 case "BOOLEAN": return "Boolean";
                 case "ENUM": case "ENUMERATED": return "Enumeration";
+                case "STRUCT": return "String"; 
                 default: return "String";
             }
         }
@@ -302,7 +315,7 @@ namespace DEMA_Parser
     {
         static void Main(string[] args)
         {
-            string inputFile = "DPM400D_IED1CID.xml";
+            string inputFile = "DPM400D_08_IED1.xml";
             string outputFile = "DPM400D_Output.xml";
 
             try
